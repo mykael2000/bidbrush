@@ -6,26 +6,13 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 
-Route::get('/check', function () {
-    return 'Laravel is working';
-});
-
-Route::get('/account/db-test', function () {
-    try {
-        DB::connection()->getPdo();
-        return '✅ DB connection is working.';
-    } catch (\Exception $e) {
-        return '❌ DB error: ' . $e->getMessage();
-    }
-});
 Route::get('/', function () {
-    return 'Homepage OK';
-    // return Inertia::render('Welcome', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
 Route::get('/dashboard', function () {
