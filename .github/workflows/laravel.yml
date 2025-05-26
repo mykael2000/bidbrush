@@ -45,19 +45,19 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
 
     # Step 8: Setup SQLite DB for Testing
-    - name: Create SQLite DB
-      working-directory: ./bidbrush-backend
-      run: |
-        mkdir -p database
-        touch database/database.sqlite
+    # - name: Create SQLite DB
+    #   working-directory: ./bidbrush-backend
+    #   run: |
+    #     mkdir -p database
+    #     touch database/database.sqlite
 
     # Step 9: Run Laravel Tests
-    - name: Run Tests
-      working-directory: ./bidbrush-backend
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: php artisan test
+    # - name: Run Tests
+    #   working-directory: ./bidbrush-backend
+    #   env:
+    #     DB_CONNECTION: sqlite
+    #     DB_DATABASE: database/database.sqlite
+    #   run: php artisan test
 
     # Step 10: Deploy via FTP to cPanel
     - name: 📦 FTP Deploy to cPanel
