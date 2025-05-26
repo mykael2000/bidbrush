@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 
+Route::get('/check', function () {
+    return 'Laravel is working';
+});
+
 Route::get('/account/db-test', function () {
     try {
         DB::connection()->getPdo();
