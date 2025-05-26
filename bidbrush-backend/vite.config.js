@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-    base: '/account/public/build/',
+    base: '/build',
     plugins: [
         laravel({
             input: 'resources/js/app.jsx',
@@ -11,4 +11,12 @@ export default defineConfig({
         }),
         react(),
     ],
+    build: {
+    outDir: '/build',  // for example, build outside public at project root ../assets_build
+    emptyOutDir: true,
+    manifest: true,
+    rollupOptions: {
+      input: 'resources/js/app.jsx',
+    },
+  },
 });
