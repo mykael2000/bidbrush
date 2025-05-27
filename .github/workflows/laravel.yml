@@ -1,75 +1,31 @@
-name: Laravel CI + FTP Deploy (Subfolder)
-
+name: Publish Website to CPanel
 on:
   push:
-    branches: [ "main" ]
-
+    branches:
+      - main
 jobs:
-  laravel-ci-deploy:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
     runs-on: ubuntu-latest
-
     steps:
-    # Step 1: Checkout the Repo
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v2.1.0
+      with:
+        fetch-depth: 2
+    - name: Build assets
+      run: npm install && npm run build
 
-    # Step 2: Setup PHP
-    - name: Setup PHP
+    - name: Install PHP and Composer
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2'
+          php-version: '8.2' # Adjust to match the PHP version used by your Laravel project
+          tools: 'composer'
 
-    # Step 3: Navigate into the Laravel subfolder
-    - name: Change Directory to ./bidbrush-backend
-      working-directory: ./bidbrush-backend
-      run: echo "Changed to bidbrush folder"
+    - name: Install PHP dependencies
+      run: composer install --no-dev --optimize-autoloader
 
-    # Step 4: Install Dependencies
-    - name: Install Composer Dependencies
-      working-directory: ./bidbrush-backend
-      run: composer install --no-interaction --prefer-dist --optimize-autoloader
-
-    # Step 5: Copy .env
-    - name: Copy .env
-      working-directory: ./bidbrush-backend
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-
-    # Step 6: Generate App Key
-    - name: Generate App Key
-      working-directory: ./bidbrush-backend
-      run: php artisan key:generate
-
-    # Step 7: Set Permissions
-    - name: Set Permissions
-      working-directory: ./bidbrush-backend
-      run: chmod -R 777 storage bootstrap/cache
-
-    # Step 8: Setup SQLite DB for Testing
-    # - name: Create SQLite DB
-    #   working-directory: ./bidbrush-backend
-    #   run: |
-    #     mkdir -p database
-    #     touch database/database.sqlite
-
-    # Step 9: Run Laravel Tests
-    # - name: Run Tests
-    #   working-directory: ./bidbrush-backend
-    #   env:
-    #     DB_CONNECTION: sqlite
-    #     DB_DATABASE: database/database.sqlite
-    #   run: php artisan test
-
-    # Step 10: Deploy via FTP to cPanel
-    - name: 📦 FTP Deploy to cPanel
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./bidbrush-backend/   # Laravel subfolder
-        server-dir: /  # Destination on cPanel
-        exclude: |
-          **/.git*
-          **/node_modules/**
-          **/vendor/**
-          .env
