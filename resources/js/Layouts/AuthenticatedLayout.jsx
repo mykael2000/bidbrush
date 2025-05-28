@@ -23,15 +23,37 @@ export default function AuthenticatedLayout({ header, children }) {
                                     <img src={Logo} className="block h-9 w-auto fill-current text-gray-800" alt="Logo" />
                                 </Link>
                             </div>
+                                <div className="hidden sm:flex sm:space-x-8 sm:ml-10">
+                                    <Link
+                                        href={route('dashboard')}
+                                        className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:border-indigo-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:border-indigo-700 transition"
+                                        active={route().current('dashboard')}
+                                    >
+                                        Home
+                                    </Link>
+                                    <Link
+                                        href={route('portfolio.index')}
+                                        className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:border-indigo-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:border-indigo-700 transition"
+                                        active={route().current('portfolio.index')}
+                                    >
+                                        Portfolio
+                                    </Link>
+                                    <Link
+                                        href={route('artists.index')}
+                                        className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:border-indigo-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:border-indigo-700 transition"
+                                        active={route().current('artists.index')}
+                                    >
+                                        Artists
+                                    </Link>
+                                </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink
+                                {/* <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
                                     Dashboard
-                                </NavLink>
-                            </div>
+                                </NavLink> */}
+
                         </div>
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
@@ -129,11 +151,14 @@ export default function AuthenticatedLayout({ header, children }) {
                     }
                 >
                     <div className="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
-                        >
-                            Dashboard
+                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+                        Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('portfolio.index')} active={route().current('portfolio.index')}>
+                        Portfolio
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('artists.index')} active={route().current('artists.index')}>
+                        Artists
                         </ResponsiveNavLink>
                     </div>
 
