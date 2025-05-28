@@ -29,7 +29,7 @@ export default function PortfolioCreate() {
     formData.append('description', data.description);
     formData.append('image', data.image);
 
-    Inertia.post('/portfolio', formData);
+    Inertia.post('/account/public/portfolio', formData);
   }
 
   return (
