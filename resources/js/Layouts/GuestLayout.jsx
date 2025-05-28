@@ -6,7 +6,7 @@ export default function GuestLayout({ children }) {
         <div className="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0">
             <div>
                 <Link href="/">
-                    <img src="/account/public/images/bid.jpeg" className="h-9 w-9 rounded-full object-cover fill-current text-gray-500" alt="Logo" />
+                    <img src="/account/public/images/bid.jpeg" className="h-20 w-20 rounded-full object-cover fill-current text-gray-500" alt="Logo" />
                 </Link>
             </div>
 
