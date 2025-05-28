@@ -34,7 +34,7 @@ export default function PortfolioIndex() {
                   className="bg-white rounded-lg shadow hover:shadow-lg transition p-4"
                 >
                   <img
-                    src={`/account/storage/${artwork.image_path}`}
+                    src={`/account/public/storage/${artwork.image_path}`}
                     alt={artwork.title}
                     className="mb-3 h-48 w-full object-cover rounded"
                     onError={(e) => (e.target.src = '/placeholder.jpg')}
