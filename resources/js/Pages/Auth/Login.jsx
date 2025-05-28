@@ -33,6 +33,9 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
+                    <h4 className='p-2 text-center font-bold'>Sign into your Bidbrush Account here</h4>
+                </div>
+                <div>
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput

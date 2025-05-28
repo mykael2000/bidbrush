@@ -27,6 +27,9 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
+                    <h4 className='p-2 text-center font-bold'>Register an Account with Bidbrush</h4>
+                </div>
+                <div>
                     <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
