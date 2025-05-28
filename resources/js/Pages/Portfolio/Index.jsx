@@ -17,7 +17,7 @@ export default function PortfolioIndex() {
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-gray-800">Artworks by {auth.user.name}</h1>
             <Link
-              href="/portfolio/create"
+              href="/account/public/portfolio/create"
               className="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white hover:bg-indigo-700 transition ease-in-out duration-150"
             >
               + Add New Artwork
@@ -34,7 +34,7 @@ export default function PortfolioIndex() {
                   className="bg-white rounded-lg shadow hover:shadow-lg transition p-4"
                 >
                   <img
-                    src={`/storage/${artwork.image_path}`}
+                    src={`/account/storage/${artwork.image_path}`}
                     alt={artwork.title}
                     className="mb-3 h-48 w-full object-cover rounded"
                     onError={(e) => (e.target.src = '/placeholder.jpg')}

@@ -97,7 +97,7 @@ export default function PortfolioCreate() {
               </button>
 
               <Link
-                href="/portfolio"
+                href="/account/public/portfolio"
                 className="ml-4 text-sm text-gray-600 hover:text-gray-900 underline"
               >
                 Cancel
