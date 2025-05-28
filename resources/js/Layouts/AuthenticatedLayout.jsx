@@ -20,7 +20,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
                                 <Link href="/">
-                                    <img src="/account/public/images/bid.jpeg" className="block h-9 w-auto fill-current text-gray-800" alt="Logo" />
+                                    <img src="/account/public/images/bid.jpeg" className="block h-9 w-9 rounded-full object-cover fill-current text-gray-800" alt="Logo" />
                                 </Link>
                             </div>
                                 <div className="hidden sm:flex sm:space-x-8 sm:ml-10">
