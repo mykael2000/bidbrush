@@ -54,7 +54,7 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Artwork::class);
     }
 
-    public function canAccessPanel(App\Models\Filament\Panel $panel): bool
+    public function canAccessPanel(): bool
     {
         // Only allow access if the user has the 'is_admin' flag set to true
         return $this->is_admin;
