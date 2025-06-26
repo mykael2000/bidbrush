@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
@@ -51,7 +52,7 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Artwork::class);
     }
 
-    public function canAccessFilament(): bool
+    public function canAccessPanel(): bool
     {
         // Only allow access if the user has the 'is_admin' flag set to true
         return $this->is_admin;
