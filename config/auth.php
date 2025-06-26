@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'filament_admin' => [
+            'driver' => 'session',
+            'provider' => 'users', // Use the same 'users' provider if admins are also App\Models\User
+        ],
     ],
 
     /*
