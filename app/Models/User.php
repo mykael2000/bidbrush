@@ -54,13 +54,4 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Artwork::class);
     }
 
-    public function canAccessPanel(Filament\Panel $panel): bool
-    {
-        // Only allow access if the user has the 'is_admin' flag set to true
-        return $this->is_admin;
-
-        // Or you could add more complex logic, e.g.:
-        // return $this->is_admin && $this->hasVerifiedEmail();
-        // return $this->is_admin && str_ends_with($this->email, '@yourcompany.com');
-    }
 }
